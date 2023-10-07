@@ -12,6 +12,14 @@ export const config = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log("beginning handler");
+    // 设置允许跨域访问的域名，可以使用通配符 * 允许所有域名访问
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // 设置允许的请求方法
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+
+    // 设置允许的请求头
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     const keyConfiguration = getKeyConfiguration(req);
 
     const message: string = req.query.message as string;
